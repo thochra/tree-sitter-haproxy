@@ -1,0 +1,2714 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "haproxy",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_item"
+      }
+    },
+    "_item": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "blank_line"
+        }
+      ]
+    },
+    "blank_line": {
+      "type": "PATTERN",
+      "value": "\\n"
+    },
+    "section": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "global_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "defaults_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "frontend_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "backend_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "listen_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "resolvers_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "userlist_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "peers_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mailers_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cache_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "program_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ring_section"
+        }
+      ]
+    },
+    "global_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "global"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_global_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "defaults_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "defaults"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "[ \\t]+"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "section_name"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_proxy_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "frontend_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "frontend"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_frontend_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "backend_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "backend"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_backend_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "listen_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "listen"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "[ \\t]+"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "bind_address"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_listen_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "resolvers_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "resolvers"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_resolvers_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "userlist_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "userlist"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_userlist_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "peers_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "peers"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_peers_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "mailers_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "mailers"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_mailers_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "cache_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "cache"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_cache_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "program_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "program"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_program_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "ring_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ring"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[ \\t]+"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_ring_directive"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "_global_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "log_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "maxconn_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nbproc_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nbthread_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cpu_map_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ssl_default_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tune_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stats_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "daemon_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ca_base_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chroot_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "crt_base_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "description_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "node_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pidfile_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "uid_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "gid_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "user_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "group_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_proxy_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "mode_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "timeout_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "option_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "no_option_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "maxconn_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "retries_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hash_type_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "errorfile_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_frontend_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "bind_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "acl_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "use_backend_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "default_backend_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "http_request_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "http_response_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tcp_request_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "redirect_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "capture_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_proxy_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "use_server_directive"
+        }
+      ]
+    },
+    "_backend_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "server_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "balance_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stick_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cookie_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "http_check_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tcp_check_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mode_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "timeout_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "option_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "no_option_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "maxconn_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "retries_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hash_type_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "errorfile_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_listen_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "bind_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "server_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "balance_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mode_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "timeout_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "option_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "no_option_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "maxconn_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "retries_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hash_type_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "errorfile_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "use_server_directive"
+        }
+      ]
+    },
+    "_resolvers_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "nameserver_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "resolve_retries_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "timeout_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_userlist_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "user_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "group_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_peers_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "peer_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_mailers_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "mailer_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "timeout_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_cache_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "total_max_size_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "max_age_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "max_object_size_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_program_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "command_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_ring_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "format_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "maxlen_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "size_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "bind_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "bind"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bind_address"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bind_options"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "server_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "server"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "server_name"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "server_address"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "server_options"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "acl_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "acl"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "acl_name"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "acl_criterion"
+        }
+      ]
+    },
+    "use_backend_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "use_backend"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "backend_ref"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "condition"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "use_server_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "use-server"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "server_name"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "condition"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "default_backend_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "default_backend"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "backend_ref"
+        }
+      ]
+    },
+    "mode_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "mode"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mode_type"
+        }
+      ]
+    },
+    "balance_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "balance"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "balance_algorithm"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "balance_options"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "timeout_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "timeout"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "timeout_type"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "time_value"
+        }
+      ]
+    },
+    "option_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "option"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "option_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "option_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "no_option_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "no"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "STRING",
+          "value": "option"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "option_name"
+        }
+      ]
+    },
+    "log_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "log"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "log_target"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "[ \\t]+"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "log_level"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "log_options"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "maxconn_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "maxconn"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "nbproc_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "nbproc"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "nbthread_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "nbthread"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "cpu_map_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "cpu-map"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cpu_map_args"
+        }
+      ]
+    },
+    "ssl_default_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "ssl-default-[a-z-]+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ssl_options"
+        }
+      ]
+    },
+    "tune_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "tune"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tune_option"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tune_value"
+        }
+      ]
+    },
+    "stats_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "stats"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stats_option"
+        }
+      ]
+    },
+    "daemon_directive": {
+      "type": "STRING",
+      "value": "daemon"
+    },
+    "ca_base_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ca-base"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "path"
+        }
+      ]
+    },
+    "chroot_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "chroot"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "path"
+        }
+      ]
+    },
+    "crt_base_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "crt-base"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "path"
+        }
+      ]
+    },
+    "description_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "description"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
+    },
+    "node_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "node"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "pidfile_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "pidfile"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "path"
+        }
+      ]
+    },
+    "uid_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "uid"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "gid_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "gid"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "user_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "user"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "user_options"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "group_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "group"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "group_options"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "retries_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "retries"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "hash_type_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "hash-type"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hash_algorithm"
+        }
+      ]
+    },
+    "errorfile_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "errorfile"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "http_status"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "path"
+        }
+      ]
+    },
+    "http_request_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "http-request"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "http_action"
+        }
+      ]
+    },
+    "http_response_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "http-response"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "http_action"
+        }
+      ]
+    },
+    "tcp_request_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "tcp-request"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tcp_type"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tcp_action"
+        }
+      ]
+    },
+    "redirect_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "redirect"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "redirect_rule"
+        }
+      ]
+    },
+    "capture_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "capture"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "capture_type"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "capture_args"
+        }
+      ]
+    },
+    "stick_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "stick"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stick_rule"
+        }
+      ]
+    },
+    "cookie_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "cookie"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cookie_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cookie_options"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "http_check_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "http-check"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "check_action"
+        }
+      ]
+    },
+    "tcp_check_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "tcp-check"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "check_action"
+        }
+      ]
+    },
+    "nameserver_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "nameserver"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "address"
+        }
+      ]
+    },
+    "resolve_retries_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "resolve_retries"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "peer_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "peer"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "address"
+        }
+      ]
+    },
+    "mailer_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "mailer"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "address"
+        }
+      ]
+    },
+    "total_max_size_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "total-max-size"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "size"
+        }
+      ]
+    },
+    "max_age_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "max-age"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "max_object_size_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "max-object-size"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "size"
+        }
+      ]
+    },
+    "command_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "command"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_line"
+        }
+      ]
+    },
+    "format_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "format"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "format_type"
+        }
+      ]
+    },
+    "maxlen_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "maxlen"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "size_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "size"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "size"
+        }
+      ]
+    },
+    "generic_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "directive_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "directive_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "section_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_.-]+"
+    },
+    "directive_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_.-]+"
+    },
+    "directive_args": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "bind_address": {
+      "type": "PATTERN",
+      "value": "[0-9a-zA-Z.:*\\[\\]-]+"
+    },
+    "bind_options": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "server_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_.-]+"
+    },
+    "server_address": {
+      "type": "PATTERN",
+      "value": "[0-9a-zA-Z.:*\\[\\]-]+"
+    },
+    "server_options": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "acl_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_.-]+"
+    },
+    "acl_criterion": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "backend_ref": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_.-]+"
+    },
+    "condition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "if"
+            },
+            {
+              "type": "STRING",
+              "value": "unless"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ \\t]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "condition_expr"
+        }
+      ]
+    },
+    "condition_expr": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "mode_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "http"
+        },
+        {
+          "type": "STRING",
+          "value": "tcp"
+        },
+        {
+          "type": "STRING",
+          "value": "health"
+        }
+      ]
+    },
+    "balance_algorithm": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "roundrobin"
+        },
+        {
+          "type": "STRING",
+          "value": "static-rr"
+        },
+        {
+          "type": "STRING",
+          "value": "leastconn"
+        },
+        {
+          "type": "STRING",
+          "value": "first"
+        },
+        {
+          "type": "STRING",
+          "value": "source"
+        },
+        {
+          "type": "STRING",
+          "value": "uri"
+        },
+        {
+          "type": "STRING",
+          "value": "url_param"
+        },
+        {
+          "type": "STRING",
+          "value": "hdr"
+        },
+        {
+          "type": "STRING",
+          "value": "random"
+        },
+        {
+          "type": "STRING",
+          "value": "rdp-cookie"
+        }
+      ]
+    },
+    "balance_options": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "timeout_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "client"
+        },
+        {
+          "type": "STRING",
+          "value": "client-fin"
+        },
+        {
+          "type": "STRING",
+          "value": "connect"
+        },
+        {
+          "type": "STRING",
+          "value": "server"
+        },
+        {
+          "type": "STRING",
+          "value": "server-fin"
+        },
+        {
+          "type": "STRING",
+          "value": "tunnel"
+        },
+        {
+          "type": "STRING",
+          "value": "http-request"
+        },
+        {
+          "type": "STRING",
+          "value": "http-keep-alive"
+        },
+        {
+          "type": "STRING",
+          "value": "queue"
+        },
+        {
+          "type": "STRING",
+          "value": "tarpit"
+        },
+        {
+          "type": "STRING",
+          "value": "check"
+        }
+      ]
+    },
+    "time_value": {
+      "type": "PATTERN",
+      "value": "\\d+[smhd]?"
+    },
+    "option_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9-]+"
+    },
+    "option_args": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "log_target": {
+      "type": "PATTERN",
+      "value": "[0-9a-zA-Z.:/@-]+"
+    },
+    "log_level": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "emerg"
+        },
+        {
+          "type": "STRING",
+          "value": "alert"
+        },
+        {
+          "type": "STRING",
+          "value": "crit"
+        },
+        {
+          "type": "STRING",
+          "value": "err"
+        },
+        {
+          "type": "STRING",
+          "value": "warning"
+        },
+        {
+          "type": "STRING",
+          "value": "notice"
+        },
+        {
+          "type": "STRING",
+          "value": "info"
+        },
+        {
+          "type": "STRING",
+          "value": "debug"
+        }
+      ]
+    },
+    "log_options": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "size": {
+      "type": "PATTERN",
+      "value": "\\d+[kKmMgG]?"
+    },
+    "path": {
+      "type": "PATTERN",
+      "value": "[^\\s]+"
+    },
+    "string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\""
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^\"]*"
+            },
+            {
+              "type": "STRING",
+              "value": "\""
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "'"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^']*"
+            },
+            {
+              "type": "STRING",
+              "value": "'"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\s]+"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_.-]+"
+    },
+    "address": {
+      "type": "PATTERN",
+      "value": "[0-9a-zA-Z.:/@-]+"
+    },
+    "http_status": {
+      "type": "PATTERN",
+      "value": "\\d{3}"
+    },
+    "cpu_map_args": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "ssl_options": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "tune_option": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9.-]+"
+    },
+    "tune_value": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "stats_option": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "user_options": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "group_options": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "hash_algorithm": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "http_action": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "tcp_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "connection"
+        },
+        {
+          "type": "STRING",
+          "value": "content"
+        },
+        {
+          "type": "STRING",
+          "value": "session"
+        }
+      ]
+    },
+    "tcp_action": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "redirect_rule": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "capture_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "request"
+        },
+        {
+          "type": "STRING",
+          "value": "response"
+        },
+        {
+          "type": "STRING",
+          "value": "cookie"
+        }
+      ]
+    },
+    "capture_args": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "stick_rule": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "cookie_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_.-]+"
+    },
+    "cookie_options": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "check_action": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "command_line": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "format_type": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "#"
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        ]
+      }
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "[ \\t]"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": [],
+  "reserved": {}
+}

@@ -1,0 +1,2219 @@
+[
+  {
+    "type": "acl_criterion",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "acl_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "acl_criterion",
+          "named": true
+        },
+        {
+          "type": "acl_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "acl_name",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "address",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "backend_ref",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "backend_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "balance_directive",
+          "named": true
+        },
+        {
+          "type": "cookie_directive",
+          "named": true
+        },
+        {
+          "type": "errorfile_directive",
+          "named": true
+        },
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "hash_type_directive",
+          "named": true
+        },
+        {
+          "type": "http_check_directive",
+          "named": true
+        },
+        {
+          "type": "maxconn_directive",
+          "named": true
+        },
+        {
+          "type": "mode_directive",
+          "named": true
+        },
+        {
+          "type": "no_option_directive",
+          "named": true
+        },
+        {
+          "type": "option_directive",
+          "named": true
+        },
+        {
+          "type": "retries_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "server_directive",
+          "named": true
+        },
+        {
+          "type": "stick_directive",
+          "named": true
+        },
+        {
+          "type": "tcp_check_directive",
+          "named": true
+        },
+        {
+          "type": "timeout_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "balance_algorithm",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "balance_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "balance_algorithm",
+          "named": true
+        },
+        {
+          "type": "balance_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "balance_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "bind_address",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "bind_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bind_address",
+          "named": true
+        },
+        {
+          "type": "bind_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bind_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ca_base_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cache_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "max_age_directive",
+          "named": true
+        },
+        {
+          "type": "max_object_size_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "total_max_size_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "capture_args",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "capture_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "capture_args",
+          "named": true
+        },
+        {
+          "type": "capture_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "capture_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "check_action",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "chroot_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_line",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_line",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "condition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "condition_expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "condition_expr",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "cookie_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "cookie_name",
+          "named": true
+        },
+        {
+          "type": "cookie_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cookie_name",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "cookie_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "cpu_map_args",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "cpu_map_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "cpu_map_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "crt_base_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "default_backend_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "backend_ref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "defaults_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "errorfile_directive",
+          "named": true
+        },
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "hash_type_directive",
+          "named": true
+        },
+        {
+          "type": "maxconn_directive",
+          "named": true
+        },
+        {
+          "type": "mode_directive",
+          "named": true
+        },
+        {
+          "type": "no_option_directive",
+          "named": true
+        },
+        {
+          "type": "option_directive",
+          "named": true
+        },
+        {
+          "type": "retries_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "timeout_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "description_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "directive_args",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "directive_name",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "errorfile_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "http_status",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "format_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "format_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "format_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "frontend_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "acl_directive",
+          "named": true
+        },
+        {
+          "type": "bind_directive",
+          "named": true
+        },
+        {
+          "type": "capture_directive",
+          "named": true
+        },
+        {
+          "type": "default_backend_directive",
+          "named": true
+        },
+        {
+          "type": "errorfile_directive",
+          "named": true
+        },
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "hash_type_directive",
+          "named": true
+        },
+        {
+          "type": "http_request_directive",
+          "named": true
+        },
+        {
+          "type": "http_response_directive",
+          "named": true
+        },
+        {
+          "type": "maxconn_directive",
+          "named": true
+        },
+        {
+          "type": "mode_directive",
+          "named": true
+        },
+        {
+          "type": "no_option_directive",
+          "named": true
+        },
+        {
+          "type": "option_directive",
+          "named": true
+        },
+        {
+          "type": "redirect_directive",
+          "named": true
+        },
+        {
+          "type": "retries_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "tcp_request_directive",
+          "named": true
+        },
+        {
+          "type": "timeout_directive",
+          "named": true
+        },
+        {
+          "type": "use_backend_directive",
+          "named": true
+        },
+        {
+          "type": "use_server_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "generic_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "directive_args",
+          "named": true
+        },
+        {
+          "type": "directive_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "gid_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "global_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ca_base_directive",
+          "named": true
+        },
+        {
+          "type": "chroot_directive",
+          "named": true
+        },
+        {
+          "type": "cpu_map_directive",
+          "named": true
+        },
+        {
+          "type": "crt_base_directive",
+          "named": true
+        },
+        {
+          "type": "daemon_directive",
+          "named": true
+        },
+        {
+          "type": "description_directive",
+          "named": true
+        },
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "gid_directive",
+          "named": true
+        },
+        {
+          "type": "group_directive",
+          "named": true
+        },
+        {
+          "type": "log_directive",
+          "named": true
+        },
+        {
+          "type": "maxconn_directive",
+          "named": true
+        },
+        {
+          "type": "nbproc_directive",
+          "named": true
+        },
+        {
+          "type": "nbthread_directive",
+          "named": true
+        },
+        {
+          "type": "node_directive",
+          "named": true
+        },
+        {
+          "type": "pidfile_directive",
+          "named": true
+        },
+        {
+          "type": "ssl_default_directive",
+          "named": true
+        },
+        {
+          "type": "stats_directive",
+          "named": true
+        },
+        {
+          "type": "tune_directive",
+          "named": true
+        },
+        {
+          "type": "uid_directive",
+          "named": true
+        },
+        {
+          "type": "user_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "group_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "group_options",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "group_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "hash_algorithm",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "hash_type_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "hash_algorithm",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "http_action",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "http_check_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "check_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "http_request_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "http_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "http_response_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "http_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "listen_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "balance_directive",
+          "named": true
+        },
+        {
+          "type": "bind_address",
+          "named": true
+        },
+        {
+          "type": "bind_directive",
+          "named": true
+        },
+        {
+          "type": "errorfile_directive",
+          "named": true
+        },
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "hash_type_directive",
+          "named": true
+        },
+        {
+          "type": "maxconn_directive",
+          "named": true
+        },
+        {
+          "type": "mode_directive",
+          "named": true
+        },
+        {
+          "type": "no_option_directive",
+          "named": true
+        },
+        {
+          "type": "option_directive",
+          "named": true
+        },
+        {
+          "type": "retries_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "server_directive",
+          "named": true
+        },
+        {
+          "type": "timeout_directive",
+          "named": true
+        },
+        {
+          "type": "use_server_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "log_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "log_level",
+          "named": true
+        },
+        {
+          "type": "log_options",
+          "named": true
+        },
+        {
+          "type": "log_target",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "log_level",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "log_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "log_target",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "mailer_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "address",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mailers_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "mailer_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "timeout_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "max_age_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "max_object_size_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "size",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "maxconn_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "maxlen_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mode_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "mode_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mode_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "nameserver_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "address",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nbproc_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nbthread_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "no_option_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "node_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "option_args",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "option_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "option_args",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "path",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "peer_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "address",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "peers_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "peer_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pidfile_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_directive",
+          "named": true
+        },
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "redirect_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "redirect_rule",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "redirect_rule",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "resolve_retries_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "resolvers_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "nameserver_directive",
+          "named": true
+        },
+        {
+          "type": "resolve_retries_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "timeout_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "retries_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ring_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "format_directive",
+          "named": true
+        },
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "maxlen_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "size_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "backend_section",
+          "named": true
+        },
+        {
+          "type": "cache_section",
+          "named": true
+        },
+        {
+          "type": "defaults_section",
+          "named": true
+        },
+        {
+          "type": "frontend_section",
+          "named": true
+        },
+        {
+          "type": "global_section",
+          "named": true
+        },
+        {
+          "type": "listen_section",
+          "named": true
+        },
+        {
+          "type": "mailers_section",
+          "named": true
+        },
+        {
+          "type": "peers_section",
+          "named": true
+        },
+        {
+          "type": "program_section",
+          "named": true
+        },
+        {
+          "type": "resolvers_section",
+          "named": true
+        },
+        {
+          "type": "ring_section",
+          "named": true
+        },
+        {
+          "type": "userlist_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section_name",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "server_address",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "server_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "server_address",
+          "named": true
+        },
+        {
+          "type": "server_name",
+          "named": true
+        },
+        {
+          "type": "server_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "server_name",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "server_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "size_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "size",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "blank_line",
+          "named": true
+        },
+        {
+          "type": "section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ssl_default_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ssl_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ssl_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "stats_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "stats_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stats_option",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "stick_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "stick_rule",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stick_rule",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "tcp_action",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "tcp_check_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "check_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tcp_request_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tcp_action",
+          "named": true
+        },
+        {
+          "type": "tcp_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tcp_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "timeout_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "time_value",
+          "named": true
+        },
+        {
+          "type": "timeout_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "timeout_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "total_max_size_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "size",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tune_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tune_option",
+          "named": true
+        },
+        {
+          "type": "tune_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tune_value",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "uid_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "use_backend_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "backend_ref",
+          "named": true
+        },
+        {
+          "type": "condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "use_server_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "condition",
+          "named": true
+        },
+        {
+          "type": "server_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "user_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "user_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "user_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "userlist_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "group_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "user_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "acl",
+    "named": false
+  },
+  {
+    "type": "alert",
+    "named": false
+  },
+  {
+    "type": "backend",
+    "named": false
+  },
+  {
+    "type": "balance",
+    "named": false
+  },
+  {
+    "type": "bind",
+    "named": false
+  },
+  {
+    "type": "blank_line",
+    "named": true
+  },
+  {
+    "type": "ca-base",
+    "named": false
+  },
+  {
+    "type": "cache",
+    "named": false
+  },
+  {
+    "type": "capture",
+    "named": false
+  },
+  {
+    "type": "check",
+    "named": false
+  },
+  {
+    "type": "chroot",
+    "named": false
+  },
+  {
+    "type": "client",
+    "named": false
+  },
+  {
+    "type": "client-fin",
+    "named": false
+  },
+  {
+    "type": "command",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
+    "type": "connect",
+    "named": false
+  },
+  {
+    "type": "connection",
+    "named": false
+  },
+  {
+    "type": "content",
+    "named": false
+  },
+  {
+    "type": "cookie",
+    "named": false
+  },
+  {
+    "type": "cpu-map",
+    "named": false
+  },
+  {
+    "type": "crit",
+    "named": false
+  },
+  {
+    "type": "crt-base",
+    "named": false
+  },
+  {
+    "type": "daemon_directive",
+    "named": true
+  },
+  {
+    "type": "debug",
+    "named": false
+  },
+  {
+    "type": "default_backend",
+    "named": false
+  },
+  {
+    "type": "defaults",
+    "named": false
+  },
+  {
+    "type": "description",
+    "named": false
+  },
+  {
+    "type": "emerg",
+    "named": false
+  },
+  {
+    "type": "err",
+    "named": false
+  },
+  {
+    "type": "errorfile",
+    "named": false
+  },
+  {
+    "type": "first",
+    "named": false
+  },
+  {
+    "type": "format",
+    "named": false
+  },
+  {
+    "type": "frontend",
+    "named": false
+  },
+  {
+    "type": "gid",
+    "named": false
+  },
+  {
+    "type": "global",
+    "named": false
+  },
+  {
+    "type": "group",
+    "named": false
+  },
+  {
+    "type": "hash-type",
+    "named": false
+  },
+  {
+    "type": "hdr",
+    "named": false
+  },
+  {
+    "type": "health",
+    "named": false
+  },
+  {
+    "type": "http",
+    "named": false
+  },
+  {
+    "type": "http-check",
+    "named": false
+  },
+  {
+    "type": "http-keep-alive",
+    "named": false
+  },
+  {
+    "type": "http-request",
+    "named": false
+  },
+  {
+    "type": "http-response",
+    "named": false
+  },
+  {
+    "type": "http_status",
+    "named": true
+  },
+  {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "info",
+    "named": false
+  },
+  {
+    "type": "leastconn",
+    "named": false
+  },
+  {
+    "type": "listen",
+    "named": false
+  },
+  {
+    "type": "log",
+    "named": false
+  },
+  {
+    "type": "mailer",
+    "named": false
+  },
+  {
+    "type": "mailers",
+    "named": false
+  },
+  {
+    "type": "max-age",
+    "named": false
+  },
+  {
+    "type": "max-object-size",
+    "named": false
+  },
+  {
+    "type": "maxconn",
+    "named": false
+  },
+  {
+    "type": "maxlen",
+    "named": false
+  },
+  {
+    "type": "mode",
+    "named": false
+  },
+  {
+    "type": "nameserver",
+    "named": false
+  },
+  {
+    "type": "nbproc",
+    "named": false
+  },
+  {
+    "type": "nbthread",
+    "named": false
+  },
+  {
+    "type": "no",
+    "named": false
+  },
+  {
+    "type": "node",
+    "named": false
+  },
+  {
+    "type": "notice",
+    "named": false
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "option",
+    "named": false
+  },
+  {
+    "type": "option_name",
+    "named": true
+  },
+  {
+    "type": "peer",
+    "named": false
+  },
+  {
+    "type": "peers",
+    "named": false
+  },
+  {
+    "type": "pidfile",
+    "named": false
+  },
+  {
+    "type": "program",
+    "named": false
+  },
+  {
+    "type": "queue",
+    "named": false
+  },
+  {
+    "type": "random",
+    "named": false
+  },
+  {
+    "type": "rdp-cookie",
+    "named": false
+  },
+  {
+    "type": "redirect",
+    "named": false
+  },
+  {
+    "type": "request",
+    "named": false
+  },
+  {
+    "type": "resolve_retries",
+    "named": false
+  },
+  {
+    "type": "resolvers",
+    "named": false
+  },
+  {
+    "type": "response",
+    "named": false
+  },
+  {
+    "type": "retries",
+    "named": false
+  },
+  {
+    "type": "ring",
+    "named": false
+  },
+  {
+    "type": "roundrobin",
+    "named": false
+  },
+  {
+    "type": "server",
+    "named": false
+  },
+  {
+    "type": "server-fin",
+    "named": false
+  },
+  {
+    "type": "session",
+    "named": false
+  },
+  {
+    "type": "size",
+    "named": false
+  },
+  {
+    "type": "size",
+    "named": true
+  },
+  {
+    "type": "source",
+    "named": false
+  },
+  {
+    "type": "static-rr",
+    "named": false
+  },
+  {
+    "type": "stats",
+    "named": false
+  },
+  {
+    "type": "stick",
+    "named": false
+  },
+  {
+    "type": "tarpit",
+    "named": false
+  },
+  {
+    "type": "tcp",
+    "named": false
+  },
+  {
+    "type": "tcp-check",
+    "named": false
+  },
+  {
+    "type": "tcp-request",
+    "named": false
+  },
+  {
+    "type": "time_value",
+    "named": true
+  },
+  {
+    "type": "timeout",
+    "named": false
+  },
+  {
+    "type": "total-max-size",
+    "named": false
+  },
+  {
+    "type": "tune",
+    "named": false
+  },
+  {
+    "type": "tune_option",
+    "named": true
+  },
+  {
+    "type": "tunnel",
+    "named": false
+  },
+  {
+    "type": "uid",
+    "named": false
+  },
+  {
+    "type": "unless",
+    "named": false
+  },
+  {
+    "type": "uri",
+    "named": false
+  },
+  {
+    "type": "url_param",
+    "named": false
+  },
+  {
+    "type": "use-server",
+    "named": false
+  },
+  {
+    "type": "use_backend",
+    "named": false
+  },
+  {
+    "type": "user",
+    "named": false
+  },
+  {
+    "type": "userlist",
+    "named": false
+  },
+  {
+    "type": "warning",
+    "named": false
+  }
+]

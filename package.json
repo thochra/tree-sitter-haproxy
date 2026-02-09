@@ -1,0 +1,46 @@
+{
+  "name": "tree-sitter-haproxy",
+  "version": "0.1.0",
+  "description": "HAProxy grammar for tree-sitter",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "author": {
+    "name": "thochra",
+    "url": "https://github.com/thochra/tree-sitter-haproxy"
+  },
+  "keywords": [
+    "parser",
+    "lexer"
+  ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "dependencies": {
+    "nan": "^2.25.0"
+  },
+  "devDependencies": {
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.26.5"
+  },
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "build-wasm": "tree-sitter build -w",
+    "generate": "tree-sitter generate",
+    "parse": "tree-sitter parse"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.haproxy",
+      "file-types": [
+        "haproxy.cfg",
+        "haproxy.conf"
+      ],
+      "injection-regex": "^haproxy$"
+    }
+  ]
+}
