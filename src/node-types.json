@@ -466,11 +466,6 @@
     }
   },
   {
-    "type": "directive_args",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "directive_name",
     "named": true,
     "fields": {}
@@ -642,6 +637,14 @@
         },
         {
           "type": "directive_name",
+          "named": true
+        },
+        {
+          "type": "size",
+          "named": true
+        },
+        {
+          "type": "time_value",
           "named": true
         }
       ]
@@ -1953,6 +1956,10 @@
   {
     "type": "description",
     "named": false
+  },
+  {
+    "type": "directive_args",
+    "named": true
   },
   {
     "type": "emerg",

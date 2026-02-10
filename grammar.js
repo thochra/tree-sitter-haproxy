@@ -349,12 +349,16 @@ module.exports = grammar({
     maxlen_directive: ($) => seq("maxlen", $.number),
     size_directive: ($) => seq("size", $.size),
 
-    generic_directive: ($) => seq($.directive_name, optional($.directive_args)),
+    generic_directive: ($) =>
+      seq(
+        $.directive_name,
+        optional(choice($.time_value, $.size, $.directive_args)),
+      ),
 
     // COMPONENTS
     section_name: ($) => /[a-zA-Z0-9_.-]+/,
     directive_name: ($) => /[a-zA-Z0-9_.-]+/,
-    directive_args: ($) => /.+/,
+    directive_args: ($) => token(prec(-1, /[^\s].+/)),
 
     bind_address: ($) => /[0-9a-zA-Z.:*\[\]/@-]+/,
     bind_options: ($) => /.+/,
