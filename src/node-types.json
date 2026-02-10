@@ -959,11 +959,6 @@
     "fields": {}
   },
   {
-    "type": "log_options",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "log_target",
     "named": true,
     "fields": {}
@@ -2063,6 +2058,10 @@
   },
   {
     "type": "log_facility",
+    "named": true
+  },
+  {
+    "type": "log_options",
     "named": true
   },
   {

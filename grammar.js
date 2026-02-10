@@ -425,7 +425,7 @@ module.exports = grammar({
         "info",
         "debug",
       ),
-    log_options: ($) => /.+/,
+    log_options: ($) => token(prec(-1, /.+/)),
 
     number: ($) => /\d+/,
     size: ($) => /\d+[kKmMgG]?/,
