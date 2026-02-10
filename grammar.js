@@ -29,13 +29,7 @@ module.exports = grammar({
 
     // SECTION DEFINITIONS
     global_section: ($) =>
-      seq(
-        "global",
-        "\n",
-        repeat(
-          choice(seq($._global_directive, "\n"), "\n"),
-        ),
-      ),
+      seq("global", "\n", repeat(choice(seq($._global_directive, "\n"), "\n"))),
 
     defaults_section: ($) =>
       seq(
@@ -233,7 +227,13 @@ module.exports = grammar({
     _userlist_directive: ($) =>
       choice($.user_directive, $.group_directive, $.generic_directive),
 
-    _peers_directive: ($) => choice($.peer_directive, $.bind_directive, $.default_bind_directive, $.generic_directive),
+    _peers_directive: ($) =>
+      choice(
+        $.peer_directive,
+        $.bind_directive,
+        $.default_bind_directive,
+        $.generic_directive,
+      ),
 
     _mailers_directive: ($) =>
       choice($.mailer_directive, $.timeout_directive, $.generic_directive),
@@ -266,8 +266,7 @@ module.exports = grammar({
         $.generic_directive,
       ),
 
-    _fcgi_app_directive: ($) =>
-      choice($.option_directive, $.generic_directive),
+    _fcgi_app_directive: ($) => choice($.option_directive, $.generic_directive),
 
     // SPECIFIC DIRECTIVES
     bind_directive: ($) =>
@@ -281,35 +280,19 @@ module.exports = grammar({
         $.server_address,
         optional($.server_options),
       ),
-    acl_directive: ($) =>
-      seq("acl", $.acl_name, $.acl_criterion),
+    acl_directive: ($) => seq("acl", $.acl_name, $.acl_criterion),
     use_backend_directive: ($) =>
-      seq(
-        "use_backend",
-        $.backend_ref,
-        optional($.condition),
-      ),
+      seq("use_backend", $.backend_ref, optional($.condition)),
     use_server_directive: ($) =>
-      seq(
-        "use-server",
-        $.server_name,
-        optional($.condition),
-      ),
-    default_backend_directive: ($) =>
-      seq("default_backend", $.backend_ref),
+      seq("use-server", $.server_name, optional($.condition)),
+    default_backend_directive: ($) => seq("default_backend", $.backend_ref),
     mode_directive: ($) => seq("mode", $.mode_type),
     balance_directive: ($) =>
-      seq(
-        "balance",
-        $.balance_algorithm,
-        optional($.balance_options),
-      ),
-    timeout_directive: ($) =>
-      seq("timeout", $.timeout_type, $.time_value),
+      seq("balance", $.balance_algorithm, optional($.balance_options)),
+    timeout_directive: ($) => seq("timeout", $.timeout_type, $.time_value),
     option_directive: ($) =>
       seq("option", $.option_name, optional($.option_args)),
-    no_option_directive: ($) =>
-      seq("no", "option", $.option_name),
+    no_option_directive: ($) => seq("no", "option", $.option_name),
     log_directive: ($) =>
       seq(
         "log",
@@ -322,10 +305,8 @@ module.exports = grammar({
     nbproc_directive: ($) => seq("nbproc", $.number),
     nbthread_directive: ($) => seq("nbthread", $.number),
     cpu_map_directive: ($) => seq("cpu-map", $.cpu_map_args),
-    ssl_default_directive: ($) =>
-      seq(/ssl-default-[a-z-]+/, $.ssl_options),
-    tune_directive: ($) =>
-      seq("tune", ".", $.tune_option, $.tune_value),
+    ssl_default_directive: ($) => seq(/ssl-default-[a-z-]+/, $.ssl_options),
+    tune_directive: ($) => seq("tune", ".", $.tune_option, $.tune_value),
     stats_directive: ($) => seq("stats", $.stats_option),
     daemon_directive: ($) => "daemon",
     ca_base_directive: ($) => seq("ca-base", $.path),
@@ -336,38 +317,30 @@ module.exports = grammar({
     pidfile_directive: ($) => seq("pidfile", $.path),
     uid_directive: ($) => seq("uid", $.number),
     gid_directive: ($) => seq("gid", $.number),
-    user_directive: ($) =>
-      seq("user", $.identifier, optional($.user_options)),
+    user_directive: ($) => seq("user", $.identifier, optional($.user_options)),
     group_directive: ($) =>
       seq("group", $.identifier, optional($.group_options)),
     retries_directive: ($) => seq("retries", $.number),
     hash_type_directive: ($) => seq("hash-type", $.hash_algorithm),
-    errorfile_directive: ($) =>
-      seq("errorfile", $.http_status, $.path),
+    errorfile_directive: ($) => seq("errorfile", $.http_status, $.path),
     http_request_directive: ($) => seq("http-request", $.http_action),
-    http_response_directive: ($) =>
-      seq("http-response", $.http_action),
+    http_response_directive: ($) => seq("http-response", $.http_action),
     tcp_request_directive: ($) =>
       choice(
         seq("tcp-request", $.tcp_type, $.tcp_action),
-        seq("tcp-request", "inspect-delay", $.time_value)
+        seq("tcp-request", "inspect-delay", $.time_value),
       ),
     redirect_directive: ($) => seq("redirect", $.redirect_rule),
-    capture_directive: ($) =>
-      seq("capture", $.capture_type, $.capture_args),
+    capture_directive: ($) => seq("capture", $.capture_type, $.capture_args),
     stick_directive: ($) => seq("stick", $.stick_rule),
     cookie_directive: ($) =>
       seq("cookie", $.cookie_name, optional($.cookie_options)),
     http_check_directive: ($) => seq("http-check", $.check_action),
     tcp_check_directive: ($) => seq("tcp-check", $.check_action),
-    nameserver_directive: ($) =>
-      seq("nameserver", $.identifier, $.address),
-    resolve_retries_directive: ($) =>
-      seq("resolve_retries", $.number),
-    peer_directive: ($) =>
-      seq("peer", $.identifier, $.address),
-    mailer_directive: ($) =>
-      seq("mailer", $.identifier, $.address),
+    nameserver_directive: ($) => seq("nameserver", $.identifier, $.address),
+    resolve_retries_directive: ($) => seq("resolve_retries", $.number),
+    peer_directive: ($) => seq("peer", $.identifier, $.address),
+    mailer_directive: ($) => seq("mailer", $.identifier, $.address),
     total_max_size_directive: ($) => seq("total-max-size", $.size),
     max_age_directive: ($) => seq("max-age", $.number),
     max_object_size_directive: ($) => seq("max-object-size", $.size),
