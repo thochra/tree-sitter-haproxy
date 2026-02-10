@@ -143,11 +143,6 @@
     "fields": {}
   },
   {
-    "type": "bind_address",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "bind_directive",
     "named": true,
     "fields": {},
@@ -386,6 +381,25 @@
     }
   },
   {
+    "type": "default_bind_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bind_address",
+          "named": true
+        },
+        {
+          "type": "bind_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "defaults_section",
     "named": true,
     "fields": {},
@@ -475,6 +489,29 @@
         },
         {
           "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fcgi_app_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "generic_directive",
+          "named": true
+        },
+        {
+          "type": "option_directive",
+          "named": true
+        },
+        {
+          "type": "section_name",
           "named": true
         }
       ]
@@ -895,6 +932,10 @@
       "required": true,
       "types": [
         {
+          "type": "log_facility",
+          "named": true
+        },
+        {
           "type": "log_level",
           "named": true
         },
@@ -1154,11 +1195,6 @@
     }
   },
   {
-    "type": "path",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "peer_directive",
     "named": true,
     "fields": {},
@@ -1185,6 +1221,14 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "bind_directive",
+          "named": true
+        },
+        {
+          "type": "default_bind_directive",
+          "named": true
+        },
         {
           "type": "generic_directive",
           "named": true
@@ -1232,7 +1276,19 @@
           "named": true
         },
         {
+          "type": "group_directive",
+          "named": true
+        },
+        {
+          "type": "option_directive",
+          "named": true
+        },
+        {
           "type": "section_name",
+          "named": true
+        },
+        {
+          "type": "user_directive",
           "named": true
         }
       ]
@@ -1328,6 +1384,10 @@
       "required": true,
       "types": [
         {
+          "type": "description_directive",
+          "named": true
+        },
+        {
           "type": "format_directive",
           "named": true
         },
@@ -1344,7 +1404,15 @@
           "named": true
         },
         {
+          "type": "server_directive",
+          "named": true
+        },
+        {
           "type": "size_directive",
+          "named": true
+        },
+        {
+          "type": "timeout_directive",
           "named": true
         }
       ]
@@ -1368,6 +1436,10 @@
         },
         {
           "type": "defaults_section",
+          "named": true
+        },
+        {
+          "type": "fcgi_app_section",
           "named": true
         },
         {
@@ -1411,11 +1483,6 @@
   },
   {
     "type": "section_name",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "server_address",
     "named": true,
     "fields": {}
   },
@@ -1548,11 +1615,6 @@
     "fields": {}
   },
   {
-    "type": "string",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "tcp_action",
     "named": true,
     "fields": {}
@@ -1586,6 +1648,10 @@
         },
         {
           "type": "tcp_type",
+          "named": true
+        },
+        {
+          "type": "time_value",
           "named": true
         }
       ]
@@ -1768,14 +1834,6 @@
     "named": false
   },
   {
-    "type": "\"",
-    "named": false
-  },
-  {
-    "type": "'",
-    "named": false
-  },
-  {
     "type": ".",
     "named": false
   },
@@ -1798,6 +1856,10 @@
   {
     "type": "bind",
     "named": false
+  },
+  {
+    "type": "bind_address",
+    "named": true
   },
   {
     "type": "blank_line",
@@ -1877,6 +1939,10 @@
     "named": false
   },
   {
+    "type": "default-bind",
+    "named": false
+  },
+  {
     "type": "default_backend",
     "named": false
   },
@@ -1898,6 +1964,10 @@
   },
   {
     "type": "errorfile",
+    "named": false
+  },
+  {
+    "type": "fcgi-app",
     "named": false
   },
   {
@@ -1969,6 +2039,10 @@
     "named": false
   },
   {
+    "type": "inspect-delay",
+    "named": false
+  },
+  {
     "type": "leastconn",
     "named": false
   },
@@ -1978,6 +2052,14 @@
   },
   {
     "type": "log",
+    "named": false
+  },
+  {
+    "type": "log_facility",
+    "named": true
+  },
+  {
+    "type": "mail",
     "named": false
   },
   {
@@ -2045,6 +2127,10 @@
     "named": true
   },
   {
+    "type": "path",
+    "named": true
+  },
+  {
     "type": "peer",
     "named": false
   },
@@ -2097,6 +2183,10 @@
     "named": false
   },
   {
+    "type": "retry",
+    "named": false
+  },
+  {
     "type": "ring",
     "named": false
   },
@@ -2111,6 +2201,10 @@
   {
     "type": "server-fin",
     "named": false
+  },
+  {
+    "type": "server_address",
+    "named": true
   },
   {
     "type": "session",
@@ -2139,6 +2233,10 @@
   {
     "type": "stick",
     "named": false
+  },
+  {
+    "type": "string",
+    "named": true
   },
   {
     "type": "tarpit",

@@ -76,6 +76,10 @@
         {
           "type": "SYMBOL",
           "name": "ring_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "fcgi_app_section"
         }
       ]
     },
@@ -93,23 +97,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_global_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_global_directive"
               },
               {
                 "type": "STRING",
@@ -131,17 +132,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": "[ \\t]+"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "section_name"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "section_name"
             },
             {
               "type": "BLANK"
@@ -155,23 +147,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_proxy_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_proxy_directive"
               },
               {
                 "type": "STRING",
@@ -190,10 +179,6 @@
           "value": "frontend"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -204,23 +189,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_frontend_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_frontend_directive"
               },
               {
                 "type": "STRING",
@@ -239,10 +221,6 @@
           "value": "backend"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -253,23 +231,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_backend_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_backend_directive"
               },
               {
                 "type": "STRING",
@@ -288,10 +263,6 @@
           "value": "listen"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -299,17 +270,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": "[ \\t]+"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "bind_address"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "bind_address"
             },
             {
               "type": "BLANK"
@@ -323,23 +285,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_listen_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_listen_directive"
               },
               {
                 "type": "STRING",
@@ -358,10 +317,6 @@
           "value": "resolvers"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -372,23 +327,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_resolvers_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_resolvers_directive"
               },
               {
                 "type": "STRING",
@@ -407,10 +359,6 @@
           "value": "userlist"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -421,23 +369,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_userlist_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_userlist_directive"
               },
               {
                 "type": "STRING",
@@ -456,10 +401,6 @@
           "value": "peers"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -470,23 +411,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_peers_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_peers_directive"
               },
               {
                 "type": "STRING",
@@ -505,10 +443,6 @@
           "value": "mailers"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -519,23 +453,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_mailers_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_mailers_directive"
               },
               {
                 "type": "STRING",
@@ -554,10 +485,6 @@
           "value": "cache"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -568,23 +495,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_cache_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_cache_directive"
               },
               {
                 "type": "STRING",
@@ -603,10 +527,6 @@
           "value": "program"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "section_name"
         },
@@ -617,23 +537,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_program_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_program_directive"
               },
               {
                 "type": "STRING",
@@ -652,8 +569,46 @@
           "value": "ring"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
+          "type": "SYMBOL",
+          "name": "section_name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_ring_directive"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  }
+                ]
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "fcgi_app_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "fcgi-app"
         },
         {
           "type": "SYMBOL",
@@ -666,23 +621,20 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[ \\t]+"
+                    "type": "SYMBOL",
+                    "name": "_fcgi_app_directive"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": "\n"
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_ring_directive"
               },
               {
                 "type": "STRING",
@@ -1037,6 +989,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "bind_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "default_bind_directive"
+        },
+        {
+          "type": "SYMBOL",
           "name": "generic_directive"
         }
       ]
@@ -1088,6 +1048,18 @@
         },
         {
           "type": "SYMBOL",
+          "name": "user_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "group_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "option_directive"
+        },
+        {
+          "type": "SYMBOL",
           "name": "generic_directive"
         }
       ]
@@ -1095,6 +1067,10 @@
     "_ring_directive": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "description_directive"
+        },
         {
           "type": "SYMBOL",
           "name": "format_directive"
@@ -1106,6 +1082,27 @@
         {
           "type": "SYMBOL",
           "name": "size_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "timeout_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "server_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_directive"
+        }
+      ]
+    },
+    "_fcgi_app_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "option_directive"
         },
         {
           "type": "SYMBOL",
@@ -1121,8 +1118,29 @@
           "value": "bind"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
+          "type": "SYMBOL",
+          "name": "bind_address"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bind_options"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "default_bind_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "default-bind"
         },
         {
           "type": "SYMBOL",
@@ -1150,16 +1168,8 @@
           "value": "server"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "server_name"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1187,16 +1197,8 @@
           "value": "acl"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "acl_name"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1212,16 +1214,8 @@
           "value": "use_backend"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "backend_ref"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "CHOICE",
@@ -1245,16 +1239,8 @@
           "value": "use-server"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "server_name"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "CHOICE",
@@ -1278,10 +1264,6 @@
           "value": "default_backend"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "backend_ref"
         }
@@ -1295,10 +1277,6 @@
           "value": "mode"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "mode_type"
         }
@@ -1310,10 +1288,6 @@
         {
           "type": "STRING",
           "value": "balance"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1341,16 +1315,8 @@
           "value": "timeout"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "timeout_type"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1364,10 +1330,6 @@
         {
           "type": "STRING",
           "value": "option"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1395,16 +1357,8 @@
           "value": "no"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "STRING",
           "value": "option"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1420,10 +1374,6 @@
           "value": "log"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "log_target"
         },
@@ -1431,17 +1381,20 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": "[ \\t]+"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "log_level"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "log_facility"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "log_level"
             },
             {
               "type": "BLANK"
@@ -1470,10 +1423,6 @@
           "value": "maxconn"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "number"
         }
@@ -1485,10 +1434,6 @@
         {
           "type": "STRING",
           "value": "nbproc"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1504,10 +1449,6 @@
           "value": "nbthread"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "number"
         }
@@ -1521,10 +1462,6 @@
           "value": "cpu-map"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "cpu_map_args"
         }
@@ -1536,10 +1473,6 @@
         {
           "type": "PATTERN",
           "value": "ssl-default-[a-z-]+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1563,10 +1496,6 @@
           "name": "tune_option"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "tune_value"
         }
@@ -1578,10 +1507,6 @@
         {
           "type": "STRING",
           "value": "stats"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1601,10 +1526,6 @@
           "value": "ca-base"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "path"
         }
@@ -1616,10 +1537,6 @@
         {
           "type": "STRING",
           "value": "chroot"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1635,10 +1552,6 @@
           "value": "crt-base"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "path"
         }
@@ -1650,10 +1563,6 @@
         {
           "type": "STRING",
           "value": "description"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1669,10 +1578,6 @@
           "value": "node"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "identifier"
         }
@@ -1684,10 +1589,6 @@
         {
           "type": "STRING",
           "value": "pidfile"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1703,10 +1604,6 @@
           "value": "uid"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "number"
         }
@@ -1720,10 +1617,6 @@
           "value": "gid"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "number"
         }
@@ -1735,10 +1628,6 @@
         {
           "type": "STRING",
           "value": "user"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1766,10 +1655,6 @@
           "value": "group"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "identifier"
         },
@@ -1795,10 +1680,6 @@
           "value": "retries"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "number"
         }
@@ -1810,10 +1691,6 @@
         {
           "type": "STRING",
           "value": "hash-type"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1829,16 +1706,8 @@
           "value": "errorfile"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "http_status"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1854,10 +1723,6 @@
           "value": "http-request"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "http_action"
         }
@@ -1871,37 +1736,47 @@
           "value": "http-response"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "http_action"
         }
       ]
     },
     "tcp_request_directive": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "tcp-request"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "tcp-request"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "tcp_type"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "tcp_action"
+            }
+          ]
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "tcp_type"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "tcp_action"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "tcp-request"
+            },
+            {
+              "type": "STRING",
+              "value": "inspect-delay"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "time_value"
+            }
+          ]
         }
       ]
     },
@@ -1911,10 +1786,6 @@
         {
           "type": "STRING",
           "value": "redirect"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1930,16 +1801,8 @@
           "value": "capture"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "capture_type"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -1955,10 +1818,6 @@
           "value": "stick"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "stick_rule"
         }
@@ -1970,10 +1829,6 @@
         {
           "type": "STRING",
           "value": "cookie"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2001,10 +1856,6 @@
           "value": "http-check"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "check_action"
         }
@@ -2016,10 +1867,6 @@
         {
           "type": "STRING",
           "value": "tcp-check"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2035,16 +1882,8 @@
           "value": "nameserver"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "identifier"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2060,10 +1899,6 @@
           "value": "resolve_retries"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "number"
         }
@@ -2077,16 +1912,8 @@
           "value": "peer"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "identifier"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2102,16 +1929,8 @@
           "value": "mailer"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "identifier"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2127,10 +1946,6 @@
           "value": "total-max-size"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "size"
         }
@@ -2142,10 +1957,6 @@
         {
           "type": "STRING",
           "value": "max-age"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2161,10 +1972,6 @@
           "value": "max-object-size"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "size"
         }
@@ -2176,10 +1983,6 @@
         {
           "type": "STRING",
           "value": "command"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2195,10 +1998,6 @@
           "value": "format"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "format_type"
         }
@@ -2212,10 +2011,6 @@
           "value": "maxlen"
         },
         {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
           "type": "SYMBOL",
           "name": "number"
         }
@@ -2227,10 +2022,6 @@
         {
           "type": "STRING",
           "value": "size"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2273,7 +2064,7 @@
     },
     "bind_address": {
       "type": "PATTERN",
-      "value": "[0-9a-zA-Z.:*\\[\\]-]+"
+      "value": "[0-9a-zA-Z.:*\\[\\]/@-]+"
     },
     "bind_options": {
       "type": "PATTERN",
@@ -2285,7 +2076,7 @@
     },
     "server_address": {
       "type": "PATTERN",
-      "value": "[0-9a-zA-Z.:*\\[\\]-]+"
+      "value": "[0-9a-zA-Z.:*\\[\\]\\-_${}]+"
     },
     "server_options": {
       "type": "PATTERN",
@@ -2318,10 +2109,6 @@
               "value": "unless"
             }
           ]
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
         },
         {
           "type": "SYMBOL",
@@ -2445,12 +2232,20 @@
         {
           "type": "STRING",
           "value": "check"
+        },
+        {
+          "type": "STRING",
+          "value": "mail"
+        },
+        {
+          "type": "STRING",
+          "value": "retry"
         }
       ]
     },
     "time_value": {
       "type": "PATTERN",
-      "value": "\\d+[smhd]?"
+      "value": "\\d+(us|ms|s|m|h|d)?"
     },
     "option_name": {
       "type": "PATTERN",
@@ -2463,6 +2258,10 @@
     "log_target": {
       "type": "PATTERN",
       "value": "[0-9a-zA-Z.:/@-]+"
+    },
+    "log_facility": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9]+"
     },
     "log_level": {
       "type": "CHOICE",
@@ -2518,47 +2317,50 @@
       "value": "[^\\s]+"
     },
     "string": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "\""
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^\"]*"
-            },
-            {
-              "type": "STRING",
-              "value": "\""
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "'"
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^']*"
-            },
-            {
-              "type": "STRING",
-              "value": "'"
-            }
-          ]
-        },
-        {
-          "type": "PATTERN",
-          "value": "[^\\s]+"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "\""
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^\"]*"
+              },
+              {
+                "type": "STRING",
+                "value": "\""
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "'"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^']*"
+              },
+              {
+                "type": "STRING",
+                "value": "'"
+              }
+            ]
+          },
+          {
+            "type": "PATTERN",
+            "value": "[^\\s]+"
+          }
+        ]
+      }
     },
     "identifier": {
       "type": "PATTERN",
