@@ -352,13 +352,13 @@ module.exports = grammar({
     generic_directive: ($) =>
       seq(
         $.directive_name,
-        optional(choice($.time_value, $.size, $.directive_args)),
+        repeat(choice($.time_value, $.size, $.directive_arg)),
       ),
 
     // COMPONENTS
     section_name: ($) => /[a-zA-Z0-9_.-]+/,
     directive_name: ($) => /[a-zA-Z0-9_.-]+/,
-    directive_args: ($) => token(prec(-1, /[^\s].+/)),
+    directive_arg: ($) => token(prec(-1, /[^\s]+/)),
 
     bind_address: ($) => /[0-9a-zA-Z.:*\[\]/@-]+/,
     bind_options: ($) => /.+/,

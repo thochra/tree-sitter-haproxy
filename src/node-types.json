@@ -632,7 +632,7 @@
       "required": true,
       "types": [
         {
-          "type": "directive_args",
+          "type": "directive_arg",
           "named": true
         },
         {
@@ -1953,7 +1953,7 @@
     "named": false
   },
   {
-    "type": "directive_args",
+    "type": "directive_arg",
     "named": true
   },
   {
