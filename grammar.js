@@ -188,6 +188,8 @@ module.exports = grammar({
         $.stick_directive,
         $.cookie_directive,
         $.http_check_directive,
+        $.http_request_directive,
+        $.http_response_directive,
         $.tcp_check_directive,
         $.mode_directive,
         $.timeout_directive,
@@ -323,8 +325,18 @@ module.exports = grammar({
     retries_directive: ($) => seq("retries", $.number),
     hash_type_directive: ($) => seq("hash-type", $.hash_algorithm),
     errorfile_directive: ($) => seq("errorfile", $.http_status, $.path),
-    http_request_directive: ($) => seq("http-request", $.http_action),
-    http_response_directive: ($) => seq("http-response", $.http_action),
+    http_request_directive: ($) =>
+      seq(
+        "http-request",
+        $.http_action,
+        repeat(choice($.http_action_arg, seq($.condition, $.condition_expr))),
+      ),
+    http_response_directive: ($) =>
+      seq(
+        "http-response",
+        $.http_action,
+        repeat(choice($.http_action_arg, seq($.condition, $.condition_expr))),
+      ),
     tcp_request_directive: ($) =>
       choice(
         seq("tcp-request", $.tcp_type, $.tcp_action),
@@ -444,7 +456,8 @@ module.exports = grammar({
     user_options: ($) => /.+/,
     group_options: ($) => /.+/,
     hash_algorithm: ($) => /.+/,
-    http_action: ($) => /.+/,
+    http_action: ($) => /[^\s]+/,
+    http_action_arg: ($) => token(prec(-1, /[^\s]+/)),
     tcp_type: ($) => choice("connection", "content", "session"),
     tcp_action: ($) => /.+/,
     redirect_rule: ($) => /.+/,

@@ -71,6 +71,14 @@
           "named": true
         },
         {
+          "type": "http_request_directive",
+          "named": true
+        },
+        {
+          "type": "http_response_directive",
+          "named": true
+        },
+        {
           "type": "maxconn_directive",
           "named": true
         },
@@ -466,6 +474,11 @@
     }
   },
   {
+    "type": "directive_arg",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "directive_name",
     "named": true,
     "fields": {}
@@ -806,6 +819,11 @@
     "fields": {}
   },
   {
+    "type": "http_action_arg",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "http_check_directive",
     "named": true,
     "fields": {},
@@ -825,11 +843,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
+          "type": "condition",
+          "named": true
+        },
+        {
+          "type": "condition_expr",
+          "named": true
+        },
+        {
           "type": "http_action",
+          "named": true
+        },
+        {
+          "type": "http_action_arg",
           "named": true
         }
       ]
@@ -840,11 +870,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
+          "type": "condition",
+          "named": true
+        },
+        {
+          "type": "condition_expr",
+          "named": true
+        },
+        {
           "type": "http_action",
+          "named": true
+        },
+        {
+          "type": "http_action_arg",
           "named": true
         }
       ]
@@ -1191,6 +1233,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "path",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "peer_directive",
@@ -1953,10 +2000,6 @@
     "named": false
   },
   {
-    "type": "directive_arg",
-    "named": true
-  },
-  {
     "type": "emerg",
     "named": false
   },
@@ -2130,10 +2173,6 @@
   },
   {
     "type": "option_name",
-    "named": true
-  },
-  {
-    "type": "path",
     "named": true
   },
   {

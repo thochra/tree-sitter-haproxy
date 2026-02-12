@@ -845,6 +845,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "http_request_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "http_response_directive"
+        },
+        {
+          "type": "SYMBOL",
           "name": "tcp_check_directive"
         },
         {
@@ -1725,6 +1733,31 @@
         {
           "type": "SYMBOL",
           "name": "http_action"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "http_action_arg"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "condition"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "condition_expr"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -1738,6 +1771,31 @@
         {
           "type": "SYMBOL",
           "name": "http_action"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "http_action_arg"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "condition"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "condition_expr"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -2065,17 +2123,6 @@
     "directive_name": {
       "type": "PATTERN",
       "value": "[a-zA-Z0-9_.-]+"
-    },
-    "directive_args": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": -1,
-        "content": {
-          "type": "PATTERN",
-          "value": "[^\\s].+"
-        }
-      }
     },
     "directive_arg": {
       "type": "TOKEN",
@@ -2441,7 +2488,18 @@
     },
     "http_action": {
       "type": "PATTERN",
-      "value": ".+"
+      "value": "[^\\s]+"
+    },
+    "http_action_arg": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": -1,
+        "content": {
+          "type": "PATTERN",
+          "value": "[^\\s]+"
+        }
+      }
     },
     "tcp_type": {
       "type": "CHOICE",
